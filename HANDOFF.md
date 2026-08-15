@@ -181,7 +181,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/main/too
 
 ## 9. What I want from you now
 
-> **Done — 14 August 2026.** All four points were carried out; the manifest format was
+> **Done — 14–15 August 2026.** All four points were carried out; the manifest format was
 > proposed, then settled as
 > [ADR 0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md). The §8 items
 > were put back to the owner rather than decided here, as asked, and the surviving ones

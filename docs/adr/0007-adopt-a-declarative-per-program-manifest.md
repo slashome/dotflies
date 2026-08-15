@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-08-14. Promotes
+Accepted — 2026-08-15. Promotes
 [`docs/manifest-format-proposal.md`](../manifest-format-proposal.md), which it
 replaces as the reference.
 

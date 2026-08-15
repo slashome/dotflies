@@ -1,6 +1,6 @@
 # PLAN — dotflies
 
-> Last updated: 14 August 2026.
+> Last updated: 15 August 2026.
 > Resume point. Read this first, before `HANDOFF.md` and `docs/`.
 > Vocabulary lives in [`docs/GLOSSARY.md`](docs/GLOSSARY.md), not here — this file is
 > only about what is done and what is next.
@@ -13,8 +13,7 @@ personal Mac `dotflies apply kitty` installed `font-hack-nerd-font` and laid
 registered the family `Hack Nerd Font Mono`, which is the string `kitty.conf` asks for —
 so the config is applied *and* honoured, not merely reported as applied.
 
-The language tripwire below is cleared: `plan` has green tests. Next is milestone 6.
-
+The language tripwire below is cleared: `plan` has green tests.
 
 Seven ADRs, all in force. The two that were blocking are settled:
 
@@ -26,7 +25,7 @@ Seven ADRs, all in force. The two that were blocking are settled:
   answered. The configuration lives at `~/.config/dotflies/`, fixed by convention — so
   dotflies has no configuration file of its own.
 
-Nothing is blocking. Milestone 1 is open.
+Nothing is blocking. **Milestone 6 is next.**
 
 ## ⚠️ Check the machine before trusting any state described here
 

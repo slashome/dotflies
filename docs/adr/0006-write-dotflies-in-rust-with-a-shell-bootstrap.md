@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-08-14. Supersedes
+Accepted — 2026-08-15. Supersedes
 [0004](archives/0004-write-dotflies-in-go-with-a-shell-bootstrap.md).
 
 ## Context

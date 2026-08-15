@@ -41,8 +41,8 @@ reused after archiving.
 | [0002](0002-limit-v1-to-macos.md) | Limit v1 to macOS and open the Linux port to contribution | Accepted | 2026-08-14 |
 | [0003](0003-separate-owned-files-from-shared-files.md) | Separate owned files from shared files, and verify managed blocks on every run | Accepted | 2026-08-14 |
 | [0005](0005-defer-templating-until-after-v1.md) | Defer templating until after v1 | Accepted | 2026-08-14 |
-| [0006](0006-write-dotflies-in-rust-with-a-shell-bootstrap.md) | Write dotflies in Rust, with a shell bootstrap | Accepted | 2026-08-14 |
-| [0007](0007-adopt-a-declarative-per-program-manifest.md) | Adopt a declarative per-program manifest, and settle where the user's directory lives | Accepted | 2026-08-14 |
+| [0006](0006-write-dotflies-in-rust-with-a-shell-bootstrap.md) | Write dotflies in Rust, with a shell bootstrap | Accepted | 2026-08-15 |
+| [0007](0007-adopt-a-declarative-per-program-manifest.md) | Adopt a declarative per-program manifest, and settle where the user's directory lives | Accepted | 2026-08-15 |
 
 ## Archived
 

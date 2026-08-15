@@ -1,6 +1,6 @@
 # Proposal — manifest format and repository layout
 
-> **Status: promoted.** Settled on 14 August 2026 and superseded as the reference by
+> **Status: promoted.** Settled on 15 August 2026 and superseded as the reference by
 > [ADR 0007](adr/0007-adopt-a-declarative-per-program-manifest.md), which answers the
 > five open questions of §7 and carries the format that is actually in force. This file
 > is kept for its working notes only — **read the ADR, not this.**
@@ -195,24 +195,17 @@ Every plan entry carries a state:
 | `skipped` | entry for another platform | nothing, explicit message ([0002](adr/0002-limit-v1-to-macos.md)) |
 | `warn` | absolute path containing `$HOME` detected | nothing ([0005](adr/0005-defer-templating-until-after-v1.md)) |
 
-## 5. Go repository layout
+## 5. Repository layout — *removed, it was wrong*
 
-```
-dotflies/
-├── cmd/dotflies/            entry point
-├── internal/
-│   ├── manifest/            reading, validation, platform resolution
-│   ├── plan/                intended vs observed state  ← the core
-│   ├── apply/               link, block, wrapper
-│   ├── verify/              behavioural checks ([[verify]])
-│   ├── pkgmgr/              brew, npm  (interface, one implementation per manager)
-│   ├── bootstrap/           first run, forge, remote repository creation
-│   └── ui/                  prompts and reporting
-├── tools/install.sh         shell bootstrap, bounded to 4 steps ([0004](adr/archives/0004-write-dotflies-in-go-with-a-shell-bootstrap.md), superseded)
-├── docs/adr/
-├── .goreleaser.yaml         → slashome/homebrew-tap
-└── README.md                including the Linux call for contribution ([0002](adr/0002-limit-v1-to-macos.md))
-```
+This section proposed a **Go** layout (`cmd/`, `internal/`, `.goreleaser.yaml`). The
+language decision was reversed by
+[ADR 0006](adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md), so the layout in
+force is the Rust one, in
+[ADR 0007](adr/0007-adopt-a-declarative-per-program-manifest.md).
+
+The block was deleted rather than struck through: left in place it reads as the current
+plan to anyone scrolling a diff, and a banner at the top of a file does not travel with
+the passage underneath it. Its history is in git if it is ever wanted.
 
 `plan/` never writes to disk. That is what makes the riskiest part of the product —
 writing into a file we do not own — testable without side effects.
