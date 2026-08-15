@@ -1,7 +1,8 @@
 .DS_Store
 
-# Go
+# Rust
+/target/
+**/*.rs.bk
+
+# Release artefacts
 /dist/
-/dotflies
-*.test
-*.out

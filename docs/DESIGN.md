@@ -285,8 +285,9 @@ Merged sources:
 Next:
 
 - [ ] settle 7 bis (where to publish) — **done**: `slashome/dotflies`
-- [ ] settle 7 (existing tool or homegrown) — **done**: see
-      [ADR 0004](adr/0004-write-dotflies-in-go-with-a-shell-bootstrap.md)
+- [ ] settle 7 (existing tool or homegrown) — **done**: homegrown, see
+      [ADR 0006](adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md)
+      (which superseded ADR 0004: the language is Rust, not Go)
 - [ ] settle `configs/homapage` vs `configs/homepage` (duplicate, typo)
 - [ ] recover the still-relevant configs from `slashome/dotfiles` (ranger, zsh, vim)
 - [ ] settle `karaokay` vs ncmpcpp's lyrics binding (functional overlap)
