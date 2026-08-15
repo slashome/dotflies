@@ -291,17 +291,41 @@ dotflies/
 │   ├── main.rs           entry point
 │   ├── cli.rs            clap derive definitions
 │   ├── paths.rs          `~/.config/dotflies` and tilde expansion — a constant, not a config
-│   ├── manifest/         reading, validation, platform resolution
-│   ├── plan/             intended vs observed state  ← the core
-│   ├── apply/            link, block, wrapper
-│   ├── verify/           [[verify]] — parsed and reported, not executed in v1
-│   ├── pkgmgr/           brew, npm — a trait, one implementation per manager
-│   ├── bootstrap/        first run, forge, remote repository creation
-│   └── ui/               prompts and reporting
+│   ├── manifest.rs       reading, validation, platform resolution
+│   ├── plan.rs           intended vs observed state  ← the core
+│   ├── apply.rs          executes a plan; decides nothing
+│   ├── blocks.rs         finding and rendering a marker-delimited block
+│   ├── wrapper.rs        generating a wrapper, and proving one is ours
+│   ├── pkgmgr.rs         brew, npm — a trait, one implementation per manager
+│   └── ui.rs             reporting
 ├── tools/install.sh      shell bootstrap, four steps ([0006](0006-write-dotflies-in-rust-with-a-shell-bootstrap.md))
 ├── docs/adr/
 └── README.md             including the Linux call for contribution ([0002](0002-limit-v1-to-macos.md))
 ```
+
+**A module is a file until it earns a directory.** `foo.rs` and `foo/mod.rs` are the same
+module path in Rust, so promoting one later moves a file and changes no import anywhere.
+Seven directories holding one file each would be ceremony bought on credit, and this
+project's documented failure mode is paying for structure before it is needed
+([0001](0001-scope-v1-to-a-minimal-verifiable-milestone.md)). Only `plan` and `manifest`
+are near the size where the split pays.
+
+Two modules here were not foreseen, and both exist because `plan` needs to answer a
+question `apply` will later act on — so the logic has to be shared, and pure:
+
+- **`blocks`** finds and renders a marker-delimited section. `plan` reads the markers to
+  decide, `apply` will write them.
+- **`wrapper`** renders the exact bytes a wrapper would contain, and answers *is this one
+  ours?* through its generated header. That header is load-bearing: it is what lets a
+  wrapper report `drifted` where a plain link can only report `conflict`.
+
+Two modules named in earlier drafts are deliberately absent:
+
+- **`verify`** has no module because it has no engine. Question 4 above keeps `[[verify]]`
+  parsed and reported but never executed in v1, so its parsing lives in `manifest.rs` with
+  every other field, and its reporting in `plan.rs` and `ui.rs` with every other output. A
+  module holding no behaviour would advertise one.
+- **`bootstrap`** is a later milestone and simply not written.
 
 Go's `internal/` has no Rust equivalent and needs none: a binary-only crate makes every
 module private by default, which is the same guarantee by construction.
