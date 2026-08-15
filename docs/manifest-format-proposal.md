@@ -1,7 +1,13 @@
 # Proposal — manifest format and repository layout
 
-> **Status: proposal.** To be settled before any code is written. Once approved, it
-> becomes ADR 0006.
+> **Status: promoted.** Settled on 14 August 2026 and superseded as the reference by
+> [ADR 0007](adr/0007-adopt-a-declarative-per-program-manifest.md), which answers the
+> five open questions of §7 and carries the format that is actually in force. This file
+> is kept for its working notes only — **read the ADR, not this.**
+>
+> One section here is outright wrong now: §5 describes a Go layout, and the language
+> decision was reversed by
+> [ADR 0006](adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md).
 >
 > Constraints to respect: [0001](adr/0001-scope-v1-to-a-minimal-verifiable-milestone.md)
 > (scope), [0002](adr/0002-limit-v1-to-macos.md) (platform key mandatory),
@@ -202,7 +208,7 @@ dotflies/
 │   ├── pkgmgr/              brew, npm  (interface, one implementation per manager)
 │   ├── bootstrap/           first run, forge, remote repository creation
 │   └── ui/                  prompts and reporting
-├── tools/install.sh         shell bootstrap, bounded to 4 steps ([0004](adr/0004-write-dotflies-in-go-with-a-shell-bootstrap.md))
+├── tools/install.sh         shell bootstrap, bounded to 4 steps ([0004](adr/archives/0004-write-dotflies-in-go-with-a-shell-bootstrap.md), superseded)
 ├── docs/adr/
 ├── .goreleaser.yaml         → slashome/homebrew-tap
 └── README.md                including the Linux call for contribution ([0002](adr/0002-limit-v1-to-macos.md))

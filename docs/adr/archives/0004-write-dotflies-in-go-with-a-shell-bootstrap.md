@@ -2,7 +2,18 @@
 
 ## Status
 
-Accepted — 2026-08-14
+Superseded — 2026-08-14 — by
+[0006](../0006-write-dotflies-in-rust-with-a-shell-bootstrap.md).
+
+Three of the four facts this ADR rested on did not survive checking. The tap has no
+goreleaser and no binary-release path **for any language**, so "well trodden" was wrong
+— though correcting it favours neither language. `redlight`, cited here as the
+structural model, is itself Rust, so this ADR's own citation did not support its
+conclusion. And the "wants tests" argument settles compiled-versus-shell, not
+Go-versus-Rust.
+
+What stays true is everything about the **shell bootstrap**: those four steps are carried
+over into 0006 unchanged, and they are why this file is worth rereading.
 
 ## Context
 
@@ -23,7 +34,7 @@ served.
 Checked: `dm` has **exactly one commit**, `Initial commit` of 24 August 2018,
 containing a one-line README. **No Go was ever written.** The repository is therefore
 not evidence about Go — it is evidence about the absence of scope, already addressed
-by [0001](0001-scope-v1-to-a-minimal-verifiable-milestone.md).
+by [0001](../0001-scope-v1-to-a-minimal-verifiable-milestone.md).
 
 Facts in favour of Go in this specific context:
 
@@ -31,7 +42,7 @@ Facts in favour of Go in this specific context:
   and is active. The goreleaser → Homebrew formula path is well trodden.
 - The product is not a sequence of chained commands. It compares states, detects
   broken links, parses managed blocks, produces a report and proposes repairs
-  ([0003](0003-separate-owned-files-from-shared-files.md)). That kind of logic wants
+  ([0003](../0003-separate-owned-files-from-shared-files.md)). That kind of logic wants
   tests, and tests badly in shell.
 - The riskiest mechanism in the product — writing into a file we do not own —
   deserves unit tests over awkward cases.
@@ -69,7 +80,7 @@ to execute straight from a URL; they must be able to read it first.
   is accepted — shell would have hit a ceiling at the first non-trivial state logic.
 - There will always be **two languages** in the repository. The boundary must stay
   sharp, or shell will reclaim ground at every convenience.
-- A Linux contributor ([0002](0002-limit-v1-to-macos.md)) inherits a typed, tested
+- A Linux contributor ([0002](../0002-limit-v1-to-macos.md)) inherits a typed, tested
   codebase rather than a script to reverse-engineer.
 - **To settle when the repository is created**: the bootstrap URL points at the
   `master` branch. GitHub creates repositories on `main` today. Either create a

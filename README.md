@@ -3,8 +3,9 @@
 A configuration manager: version the configuration of the software you use, and
 reinstall it **with a single command** on a fresh machine.
 
-> **Status: design.** No code yet. The scope is settled ([`docs/adr/`](docs/adr/)),
-> the manifest format is proposed but not approved. See [`PLAN.md`](PLAN.md).
+> **Status: starting.** The scope and the manifest format are both settled
+> ([`docs/adr/`](docs/adr/)); the code is being written in Rust. See
+> [`PLAN.md`](PLAN.md) for where it stands.
 
 ## The problem
 
@@ -51,9 +52,16 @@ The full reasoning is in [ADR 0002](docs/adr/0002-limit-v1-to-macos.md).
 ## Documentation
 
 - [`PLAN.md`](PLAN.md) — status, blockers, milestones
+- [`docs/GLOSSARY.md`](docs/GLOSSARY.md) — every term in two sentences, and why it exists
+  here. Start there if "managed block" or "drift" means nothing to you yet
 - [`docs/adr/`](docs/adr/) — the decisions and why they were made
 - [`docs/DESIGN.md`](docs/DESIGN.md) — analysis of the problem
-- [`docs/manifest-format-proposal.md`](docs/manifest-format-proposal.md) — proposed format
+- [`ADR 0007`](docs/adr/0007-adopt-a-declarative-per-program-manifest.md) — the manifest
+  format, where your configuration lives, and why
+
+Your configuration lives in its own repository, separate from this one — proposed as
+`<your-username>/_dotflies` at first run, and entirely optional: dotflies works with no
+remote at all.
 
 ## Licence
 

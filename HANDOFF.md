@@ -4,6 +4,15 @@
 > That session set up the Meld / kitty / mpd / ncmpcpp / VS Code configuration by hand
 > and wrote the design notes. The project starts here.
 
+> **This is the origin document, kept for its context — not the current state.**
+> For where things stand, read [`PLAN.md`](PLAN.md). Two things here have moved on: the
+> language is Rust, not Go ([0006](docs/adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md)),
+> and the questions §9 asks have been answered
+> ([0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md)).
+>
+> It was written on the **work Mac** (`$HOME` = `<work-home>`). Everything
+> §3 describes is that machine's state. Check before trusting it elsewhere.
+
 ---
 
 I am starting the **dotflies** project in this folder. Here is the whole context.
@@ -37,6 +46,9 @@ In other words, versioning is a guided option, not a prerequisite. `dotflies` mu
 usable with no remote repository at all.
 
 ## 3. Current state — to absorb
+
+> ⚠️ **On the work Mac only.** The personal Mac has none of this: no `~/.dotflies`, no
+> links, `~/.config/kitty/` empty. See the note at the top of `PLAN.md`.
 
 `~/.dotflies/` already exists, assembled **by hand**, and holds the live configuration:
 
@@ -146,17 +158,18 @@ these decisions are binding:
 | [0001](docs/adr/0001-scope-v1-to-a-minimal-verifiable-milestone.md) | v1 scope: `adopt` + links + managed blocks + wrappers + Homebrew/npm install + `doctor`. Acceptance criterion: **rebuild the nine current links from scratch, Meld included**. |
 | [0002](docs/adr/0002-limit-v1-to-macos.md) | macOS only, but a **platform key in the manifest from v1**. Linux call for contribution in the README. |
 | [0003](docs/adr/0003-separate-owned-files-from-shared-files.md) | Owned file → link; shared file → **managed block** with markers. Integrity check **on every run**, not only on demand. |
-| [0004](docs/adr/0004-write-dotflies-in-go-with-a-shell-bootstrap.md) | **Go**, with `tools/install.sh` in POSIX shell strictly bounded to bootstrapping. |
+| ~~0004~~ | ~~**Go**~~ — superseded by 0006. |
 | [0005](docs/adr/0005-defer-templating-until-after-v1.md) | No templating in v1; `doctor` reports absolute paths. |
+| [0006](docs/adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md) | **Rust**, with `tools/install.sh` in POSIX shell strictly bounded to bootstrapping. |
+| [0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md) | Manifest format frozen; the configuration lives at `~/.config/dotflies/`, fixed by convention, so dotflies has no config file of its own. |
 
-Intended entry point:
+Intended entry point — settled on `main` by
+[0006](docs/adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md), since the
+repository exists on `main` and the original `master` URL would have 404'd:
 
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/main/tools/install.sh)"
 ```
-
-⚠️ That URL points at `master`. GitHub creates repositories on `main` — settle it at
-creation time, or it 404s.
 
 ## 8. Still open
 
@@ -167,6 +180,13 @@ creation time, or it 404s.
 - **Linux ↔ macOS migration**: explicitly out of v1 per 0002, to be replanned.
 
 ## 9. What I want from you now
+
+> **Done — 14 August 2026.** All four points were carried out; the manifest format was
+> proposed, then settled as
+> [ADR 0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md). The §8 items
+> were put back to the owner rather than decided here, as asked, and the surviving ones
+> are tracked under *Deferred decisions* in [`PLAN.md`](PLAN.md). Kept below as the
+> record of what was asked.
 
 1. Read [`PLAN.md`](PLAN.md), then all of `docs/adr/`, then
    [`docs/DESIGN.md`](docs/DESIGN.md) and [`docs/SOFTWARE.md`](docs/SOFTWARE.md).
