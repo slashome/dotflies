@@ -231,8 +231,7 @@ pub fn load_app(root: &Utf8Path, app: &str) -> Result<Manifest> {
         bail!("{app} is listed in {ROOT_MANIFEST} but {path} does not exist");
     }
     let text = std::fs::read_to_string(&path).with_context(|| format!("reading {path}"))?;
-    let mut parsed: Manifest =
-        toml::from_str(&text).with_context(|| format!("parsing {path}"))?;
+    let mut parsed: Manifest = toml::from_str(&text).with_context(|| format!("parsing {path}"))?;
     parsed.dir = dir;
     validate(&parsed).with_context(|| format!("validating {path}"))?;
     Ok(parsed)
@@ -291,7 +290,11 @@ fn validate(m: &Manifest) -> Result<()> {
         }
         let source = m.dir.join(&block.source);
         if !source.is_file() {
-            problems.push(format!("[[block]] #{}: source {} is missing", i + 1, source));
+            problems.push(format!(
+                "[[block]] #{}: source {} is missing",
+                i + 1,
+                source
+            ));
         }
         if block.marker.trim().is_empty() {
             problems.push(format!("[[block]] #{}: marker is empty", i + 1));
@@ -303,7 +306,10 @@ fn validate(m: &Manifest) -> Result<()> {
 
     for (i, wrapper) in m.wrappers.iter().enumerate() {
         if wrapper.target.is_empty() {
-            problems.push(format!("[[wrapper]] #{}: target declares no platform", i + 1));
+            problems.push(format!(
+                "[[wrapper]] #{}: target declares no platform",
+                i + 1
+            ));
         }
         if wrapper.exec.is_empty() {
             problems.push(format!("[[wrapper]] #{}: exec declares no platform", i + 1));
@@ -432,7 +438,10 @@ mod tests {
         )
         .unwrap();
         assert_eq!(
-            m.wrappers[0].env.get("GSETTINGS_BACKEND").map(String::as_str),
+            m.wrappers[0]
+                .env
+                .get("GSETTINGS_BACKEND")
+                .map(String::as_str),
             Some("keyfile")
         );
     }

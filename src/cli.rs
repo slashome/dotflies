@@ -1,7 +1,11 @@
 use clap::{Parser, Subcommand};
 
 #[derive(Parser, Debug)]
-#[command(name = "dotflies", version, about = "Version your configuration, reinstall it in one command")]
+#[command(
+    name = "dotflies",
+    version,
+    about = "Version your configuration, reinstall it in one command"
+)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Command,

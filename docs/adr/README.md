@@ -43,6 +43,7 @@ reused after archiving.
 | [0005](0005-defer-templating-until-after-v1.md) | Defer templating until after v1 | Accepted | 2026-08-14 |
 | [0006](0006-write-dotflies-in-rust-with-a-shell-bootstrap.md) | Write dotflies in Rust, with a shell bootstrap | Accepted | 2026-08-15 |
 | [0007](0007-adopt-a-declarative-per-program-manifest.md) | Adopt a declarative per-program manifest, and settle where the user's directory lives | Accepted | 2026-08-15 |
+| [0008](0008-reserve-drift-for-what-can-be-proved-ours.md) | Reserve `drifted` for what can be proved ours | Accepted | 2026-08-15 |
 
 ## Archived
 

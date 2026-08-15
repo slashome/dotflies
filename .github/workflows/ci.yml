@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  # A warning that does not fail the build is a warning nobody fixes. The crate is
+  # deliberately small (ADR 0001), so there is no backlog to grandfather in.
+  RUSTFLAGS: -D warnings
+
+jobs:
+  check:
+    # macOS on purpose: v1 targets darwin only (ADR 0002), and the tests touch real
+    # symlinks and real file metadata. Running them on Linux would exercise a platform
+    # this build does not claim to support.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Format
+        run: cargo fmt --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets
+
+      - name: Tests
+        run: cargo test

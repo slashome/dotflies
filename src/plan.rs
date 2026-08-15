@@ -25,11 +25,28 @@ pub enum State {
 }
 
 impl State {
+    /// Exhaustive on purpose, and it must stay that way.
+    ///
+    /// This is the gate `apply` acts on, and ADR 0006 chose Rust on the claim that a
+    /// forgotten case here is a compile error rather than a silent write into a file we
+    /// do not own — a `.zshrc`, typically. `matches!` would defeat exactly that: a
+    /// seventh state added later would fall through to `false` without a word. Adding a
+    /// variant to `State` must break this function, and `is_problem` below, on purpose.
     pub fn needs_action(&self) -> bool {
-        matches!(self, State::Absent)
+        match self {
+            State::Absent => true,
+            State::Ok | State::Drifted(_) | State::Conflict(_) | State::Skipped(_) => false,
+        }
     }
+
+    /// Exhaustive for the same reason, and the more dangerous of the two: a state that
+    /// fell through to `false` here would not be reported at all, and `doctor` would
+    /// exit 0 on a machine it had not understood.
     pub fn is_problem(&self) -> bool {
-        matches!(self, State::Drifted(_) | State::Conflict(_))
+        match self {
+            State::Drifted(_) | State::Conflict(_) => true,
+            State::Ok | State::Absent | State::Skipped(_) => false,
+        }
     }
 }
 
@@ -109,11 +126,7 @@ pub struct Installed {
     pub npm_global: BTreeSet<String>,
 }
 
-pub fn compute(
-    manifests: &[Manifest],
-    platform: &str,
-    installed: &Installed,
-) -> Result<Plan> {
+pub fn compute(manifests: &[Manifest], platform: &str, installed: &Installed) -> Result<Plan> {
     let mut plan = Plan::default();
     let home = paths::home()?;
 
@@ -243,7 +256,10 @@ fn skipped(
         state: State::Skipped(if declared.is_empty() {
             format!("declares no platform, and this is {platform}")
         } else {
-            format!("declared for {}, and this is {platform}", declared.join("/"))
+            format!(
+                "declared for {}, and this is {platform}",
+                declared.join("/")
+            )
         }),
         action: None,
         warnings: Vec::new(),
@@ -301,9 +317,9 @@ fn plan_install(
                     app: m.name.clone(),
                     mechanism: Mechanism::Install,
                     what: "packages".into(),
-                    state: State::Skipped(format!(
-                        "declared for linux, and this build resolves darwin only"
-                    )),
+                    state: State::Skipped(
+                        "declared for linux, and this build resolves darwin only".to_string(),
+                    ),
                     action: None,
                     warnings: Vec::new(),
                     note: None,
@@ -554,8 +570,7 @@ mod tests {
         )
         .unwrap();
 
-        let warnings =
-            scan_for_absolute_paths(&source, LinkKind::File, Utf8Path::new("/Users/me"));
+        let warnings = scan_for_absolute_paths(&source, LinkKind::File, Utf8Path::new("/Users/me"));
         assert_eq!(warnings.len(), 1);
         assert!(
             warnings[0].contains("already broken here"),
@@ -570,8 +585,7 @@ mod tests {
         let source = dir.join("kitty.conf");
         fs::write(&source, "font_family Hack Nerd Font Mono\nfont_size 12.0\n").unwrap();
         assert!(
-            scan_for_absolute_paths(&source, LinkKind::File, Utf8Path::new("/Users/me"))
-                .is_empty()
+            scan_for_absolute_paths(&source, LinkKind::File, Utf8Path::new("/Users/me")).is_empty()
         );
     }
 }

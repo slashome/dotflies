@@ -99,13 +99,14 @@ part of the product.
 
 ### Drift
 
-Our link is now a regular file, or our block has been edited in place. Reported, **never
+Our **block** or our **wrapper** is there and its content has changed. Reported, **never
 silently recreated** — overwriting would destroy whatever the program or you put there.
 Repair takes `--force`.
 
-*Why here:* it is the signature of an atomic rewrite, and the failure it detects is silent
-by nature. A software update can remove your settings without printing anything, which is
-why the check runs on every command rather than in a command you have to remember.
+*Why here:* a link can never be drifted, only `conflict`
+([ADR 0008](adr/0008-reserve-drift-for-what-can-be-proved-ours.md)). Drift asserts *this
+was ours and changed*, and only a block's markers or a wrapper's generated header prove
+authorship. A plain file at a link's target proves nothing — see *Conflict*.
 
 ### Conflict — and the limit behind it
 

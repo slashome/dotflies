@@ -41,7 +41,12 @@ pub fn report(plan: &Plan) {
 fn line(entry: &Entry) -> String {
     let mechanism = format!("{:<8}", entry.mechanism.label());
     match &entry.state {
-        State::Ok => format!("{} {} {}", "ok      ".green(), mechanism.dimmed(), entry.what),
+        State::Ok => format!(
+            "{} {} {}",
+            "ok      ".green(),
+            mechanism.dimmed(),
+            entry.what
+        ),
         State::Absent => format!(
             "{} {} {}",
             "absent  ".blue(),

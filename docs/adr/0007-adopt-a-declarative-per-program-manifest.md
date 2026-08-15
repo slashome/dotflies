@@ -277,7 +277,7 @@ small. Every plan entry carries a state:
 |---|---|---|
 | `ok` | conforms | nothing |
 | `absent` | link, block or wrapper missing | lays it |
-| `drifted` | link replaced by a regular file, or block edited by hand | **nothing** — reports, requires `--force` |
+| `drifted` | our block or wrapper is there and its content changed — see [0008](0008-reserve-drift-for-what-can-be-proved-ours.md) | **nothing** — reports, requires `--force` |
 | `conflict` | a file exists at the target and is not ours | back up, then lay — or refuse |
 | `skipped` | entry for another platform | nothing, explicit message ([0002](0002-limit-v1-to-macos.md)) |
 | `warn` | absolute path containing the current `$HOME` found in a managed file | nothing ([0005](0005-defer-templating-until-after-v1.md)) |
