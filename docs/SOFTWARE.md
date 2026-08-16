@@ -39,7 +39,7 @@ Disposition:
 
 | Program | Decision |
 |---|---|
-| **ranger** | To adopt. Configuration already present in `slashome/dotfiles` (2019): `rc.conf`, `bookmarks`, `tagged`. |
+| **ranger** | To adopt. Configuration already present in the 2019 repository: `rc.conf`, `bookmarks`, `tagged`. |
 | **ncmpcpp** | ✅ already adopted above. |
 | **qutebrowser** | **To settle.** Still in use? 2019 configuration available. |
 | **rxvt-unicode** | **Obsolete.** X11 only, replaced by kitty. Not to be carried over. |
@@ -49,14 +49,14 @@ Disposition:
 These are not configurations but programs of our own that the installer will have to
 lay down:
 
-| Repository | Role | Relation to dotflies |
+| Program | Role | Relation to dotflies |
 |---|---|---|
-| [`slashome/karaokay`](https://github.com/slashome/karaokay) | Synchronised lyrics in the terminal, via MPD | **Directly overlaps** `configs/ncmpcpp/`: the `7 → show_lyrics` binding and ncmpcpp's `*_lyrics` options do the same job. One or the other. |
-| [`slashome/redlight`](https://github.com/slashome/redlight) | USB sync daemon, macOS + Linux | Precedent for homegrown cross-platform code; worth reading for structure. |
-| [`slashome/homebrew-tap`](https://github.com/slashome/homebrew-tap) | Homebrew tap | **Ready-made distribution channel** for `dotflies` and `karaokay` on macOS. |
-| [`slashome/scriptr`](https://github.com/slashome/scriptr) | Script launcher written in Go | Overlaps the `script-launcher.sh` of the 2019 repository. |
+| A terminal lyrics tool | Synchronised lyrics in the terminal, via MPD | **Directly overlaps** `configs/ncmpcpp/`: the `7 → show_lyrics` binding and ncmpcpp's `*_lyrics` options do the same job. One or the other. |
+| A USB sync daemon | macOS + Linux | Precedent for homegrown cross-platform code; worth reading for structure. |
+| [Our Homebrew tap](https://github.com/slashome/homebrew-tap) | Homebrew tap | **Ready-made distribution channel** for `dotflies` on macOS. |
+| A script launcher | Written in Go | Overlaps the `script-launcher.sh` of the 2019 repository. |
 
-## Archive — the 2019 list (`slashome/dotfiles`, Arch Linux + i3)
+## Archive — the 2019 list (Arch Linux + i3)
 
 Kept for reference. **Not to be reused as-is**: it targets Arch (`trizen`), X11 and an
 i3 environment that is no longer in use.

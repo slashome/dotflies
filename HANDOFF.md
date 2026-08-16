@@ -10,8 +10,8 @@
 > and the questions §9 asks have been answered
 > ([0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md)).
 >
-> It was written on the **work Mac** (`$HOME` = `<work-home>`). Everything
-> §3 describes is that machine's state. Check before trusting it elsewhere.
+> It was written on the **work Mac**, whose `$HOME` differs from the personal one.
+> Everything §3 describes is that machine's state. Check before trusting it elsewhere.
 
 ---
 
@@ -115,10 +115,10 @@ I audited my 30 repositories. Four matter:
 
 | Repository | State | Lesson |
 |---|---|---|
-| [`slashome/dm`](https://github.com/slashome/dm) (2018) | **empty**, "A dotfile manager written in GO" | abandoned attempt |
-| [`slashome/dotfiles`](https://github.com/slashome/dotfiles) (2019) | **real and complete**, Arch + i3 | the only version that ever served |
-| [`slashome/profiles`](https://github.com/slashome/profiles) (2025) | **empty**, "All my dotfly profiles" | abandoned attempt |
-| [`slashome/homebrew-tap`](https://github.com/slashome/homebrew-tap) (active) | Homebrew tap | distribution channel already in place |
+| A dotfile manager (2018) | **empty**, "A dotfile manager written in GO" | abandoned attempt |
+| A dotfiles repository (2019) | **real and complete**, Arch + i3 | the only version that ever served |
+| A profiles repository (2025) | **empty**, "All my dotfly profiles" | abandoned attempt |
+| Our Homebrew tap (active) | Homebrew tap | distribution channel already in place |
 
 **The signal: two "manager" attempts left empty, one plain shell version that actually
 served for years.** The deciding factor looks like the size of the initial push, not
@@ -131,9 +131,8 @@ and (e)), and a centralised `createLink` helper. What it lacks: portability (`tr
 hardcoded), `--dry-run`, after-the-fact verification, uninstallation.
 → **Reuse the skeleton, not the code.**
 
-See also [`slashome/redlight`](https://github.com/slashome/redlight): my most recent
-homegrown code running on macOS **and** Linux — read its structure before inventing
-another one.
+See also our USB sync daemon: the most recent homegrown code running on macOS **and**
+Linux — read its structure before inventing another one.
 
 ## 6. What the manager will have to do
 
@@ -176,7 +175,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/main/too
 - **Fate of `~/.dotflies/configs/`**: migrate to the future `_dotflies` repository, or
   stay local until the manager exists.
 - **`configs/homapage` vs `configs/homepage`**: duplicate with a typo.
-- **`karaokay` vs ncmpcpp's lyrics binding**: functional overlap to settle.
+- **Our lyrics tool vs ncmpcpp's lyrics binding**: functional overlap to settle.
 - **Linux ↔ macOS migration**: explicitly out of v1 per 0002, to be replanned.
 
 ## 9. What I want from you now
@@ -190,8 +189,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/main/too
 
 1. Read [`PLAN.md`](PLAN.md), then all of `docs/adr/`, then
    [`docs/DESIGN.md`](docs/DESIGN.md) and [`docs/SOFTWARE.md`](docs/SOFTWARE.md).
-2. Look at `slashome/dotfiles` (2019) — especially `install.sh`, `program_list.sh` and
-   `scripts/core/` — to absorb what worked.
+2. Look at the 2019 dotfiles repository — especially `install.sh`, `program_list.sh`
+   and `scripts/core/` — to absorb what worked.
 3. Propose **the manifest format** and the Go repository layout. It is the first brick:
    everything else depends on it, and 0002 requires it to carry the platform key from
    the start.

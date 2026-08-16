@@ -18,9 +18,9 @@ There is, however, an explicit requirement: **moving from one system to the othe
 must be handled** (Linux to macOS, or the reverse). That requirement is in direct
 tension with "macOS first" — handling that migration *is* the cross-platform work.
 
-There is precedent. [`slashome/dotfiles`](https://github.com/slashome/dotfiles) (2019)
-hardcoded `trizen` with no notion of platform at all. That single choice made the
-repository useless the moment the system changed.
+There is precedent. The 2019 dotfiles repository hardcoded `trizen` with no notion of
+platform at all. That single choice made the repository useless the moment the system
+changed.
 
 ## Decision
 

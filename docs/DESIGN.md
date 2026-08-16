@@ -5,18 +5,18 @@
 >
 > See also [`SOFTWARE.md`](SOFTWARE.md) — inventory of programs to install.
 
-## 0. Prior art — what already exists under slashome
+## 0. Prior art — what already exists
 
-An audit of the account's 30 repositories. Four are directly relevant:
+An audit of our own 30 repositories. Four are directly relevant:
 
 | Repository | Date | State | Verdict |
 |---|---|---|---|
-| [`dm`](https://github.com/slashome/dm) | 2018 | **Empty** (README only): "A dotfile manager written in GO" | The project has been attempted twice and abandoned at the intention stage both times. **The real risk is not technical, it is scope**: these notes must stay small enough to be executable. |
-| [`dotfiles`](https://github.com/slashome/dotfiles) | 2019 | **Real and complete**: Arch + i3, `install.sh`, `program_list.sh`, per-program configs | Prior art to reuse (see below). |
-| [`profiles`](https://github.com/slashome/profiles) | 2025 | **Empty**: "All my dotfly profiles" | Name already reserved, and the notion of *profiles* is worth keeping. |
+| A dotfile manager | 2018 | **Empty** (README only): "A dotfile manager written in GO" | The project has been attempted twice and abandoned at the intention stage both times. **The real risk is not technical, it is scope**: these notes must stay small enough to be executable. |
+| A dotfiles repository | 2019 | **Real and complete**: Arch + i3, `install.sh`, `program_list.sh`, per-program configs | Prior art to reuse (see below). |
+| A profiles repository | 2025 | **Empty**: "All my dotfly profiles" | The name `profiles` is already taken, and the notion is worth keeping. |
 | [`homebrew-tap`](https://github.com/slashome/homebrew-tap) | 2026 | Active | **Distribution channel already in place** for `dotflies` on macOS. |
 
-### What `slashome/dotfiles` (2019) already solved
+### What the 2019 dotfiles repository already solved
 
 Its `install.sh` architecture prefigures section 6 almost exactly:
 
@@ -38,9 +38,9 @@ validated by experience; the new work is portability and verification.
 
 ### Cross-platform precedent
 
-[`redlight`](https://github.com/slashome/redlight) — a USB sync daemon for macOS and
-Linux, actively maintained — is the most recent precedent for homegrown code that has
-to run on both systems. Read its structure before inventing another one.
+An existing USB sync daemon of ours, running on macOS and Linux and actively
+maintained, is the most recent precedent for homegrown code that has to work on both
+systems. Read its structure before inventing another one.
 
 ## 1. Goal
 
@@ -243,12 +243,12 @@ language.
 
 | Option | For | Against |
 |---|---|---|
-| **`slashome/profiles`** | name already reserved and described for this, empty repository | "profiles" names a narrower notion (per-machine profiles) than the project |
-| **A new `slashome/dotflies`** | the project's name, a clean start | one more repository |
-| **Reuse `slashome/dotfiles`** | keeps the 2019 history, prior art in the same tree | five years of dead Arch/i3 content to purge first |
-| **`slashome/dm`** | short name, already "dotfile manager" | does not say "dotflies" |
+| **The existing `profiles` repository** | name already reserved and described for this, empty repository | "profiles" names a narrower notion (per-machine profiles) than the project |
+| **A new `dotflies` repository** | the project's name, a clean start | one more repository |
+| **Reuse the 2019 dotfiles repository** | keeps the 2019 history, prior art in the same tree | five years of dead Arch/i3 content to purge first |
+| **The 2018 `dm` repository** | short name, already "dotfile manager" | does not say "dotflies" |
 
-Distribution of the binary once written: `slashome/homebrew-tap` on macOS.
+Distribution of the binary once written: our Homebrew tap on macOS.
 A promising split: keep the **manager** (`dotflies`, published through the tap) apart
 from the **configuration** (`_dotflies`).
 
@@ -284,13 +284,13 @@ Merged sources:
 
 Next:
 
-- [ ] settle 7 bis (where to publish) — **done**: `slashome/dotflies`
+- [ ] settle 7 bis (where to publish) — **done**: a new `dotflies` repository
 - [ ] settle 7 (existing tool or homegrown) — **done**: homegrown, see
       [ADR 0006](adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md)
       (which superseded ADR 0004: the language is Rust, not Go)
 - [ ] settle `configs/homapage` vs `configs/homepage` (duplicate, typo)
-- [ ] recover the still-relevant configs from `slashome/dotfiles` (ranger, zsh, vim)
-- [ ] settle `karaokay` vs ncmpcpp's lyrics binding (functional overlap)
+- [ ] recover the still-relevant configs from the 2019 repository (ranger, zsh, vim)
+- [ ] settle our lyrics tool vs ncmpcpp's lyrics binding (functional overlap)
 - [ ] adopt `~/.gitconfig`, `~/.zshrc`, `~/.claude/`
 - [ ] capture a `Brewfile`
 - [ ] handle the `window-state` noise in Meld's keyfile

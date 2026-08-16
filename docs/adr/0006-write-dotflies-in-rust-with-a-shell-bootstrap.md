@@ -28,11 +28,10 @@ Two things were measured rather than assumed.
 | The same, **incremental** after editing one module | **0.48 s** |
 | Incremental `cargo test` loop | **0.45 s** |
 
-**The tap.** `slashome/homebrew-tap` holds `Formula/redlight.rb` (Rust, `depends_on
-"rust" => :build` plus `cargo install`, so the user compiles) and `Formula/karaokay.rb`
-(Python, virtualenv, eleven pinned `resource` blocks). `RELEASING.md` documents a
-source-tarball plus `shasum` flow, and CI runs only `brew style` and `brew audit
---strict --online`.
+**The tap.** Our Homebrew tap holds two formulae: one in Rust (`depends_on "rust" =>
+:build` plus `cargo install`, so the user compiles) and one in Python (virtualenv,
+eleven pinned `resource` blocks). Its `RELEASING.md` documents a source-tarball plus
+`shasum` flow, and CI runs only `brew style` and `brew audit --strict --online`.
 
 Three arguments that look decisive are not, and saying so is the point of this ADR:
 
@@ -43,7 +42,7 @@ Three arguments that look decisive are not, and saying so is the point of this A
   any language**. The formula dotflies needs — prebuilt binaries — has to be built from
   scratch whichever language wins. 0004's claim that "the goreleaser → Homebrew path is
   well trodden" was false, but correcting it does not score a point for Rust.
-- **`redlight` being Rust is not a language argument.** 0004 said "read its structure
+- **The cited daemon being Rust is not a language argument.** 0004 said "read its structure
   before inventing another one", which is advice about code organisation. There is a real
   argument nearby — keeping one systems language on the account, for the two tools that
   manipulate files and subprocesses on macOS and Linux — but it is a supporting one, not a
@@ -180,7 +179,7 @@ formula. Rejected on one dirimant point: dotflies exists to repair a fresh or br
 machine, and depending on a runtime whose version, `PATH` and manager (nvm, fnm, volta,
 brew) are part of what dotflies is supposed to manage is a circular dependency.
 
-**Python.** Rejected, and the tap prices it exactly: `Formula/karaokay.rb` carries a
+**Python.** Rejected, and the tap prices it exactly: its Python formula carries a
 virtualenv and eleven pinned `resource` blocks to regenerate on every release. The same
 circular-runtime objection applies.
 

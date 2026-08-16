@@ -81,8 +81,8 @@ dotflies already uses for everything else.
 
 This also dissolves a question that looked like it needed answering: **there is no
 `_dotflies` versus `.dotflies` problem.** On GitHub a user's repositories have no nesting
-— they all sit side by side under `slashome/`, so a program and its content repository
-cannot share a name, and the content one takes `_`, consistent with `ariane` / `_ariane`.
+— they all sit side by side under one account, so a program and its content repository
+cannot share a name, and the content one takes `_`, a convention we already use elsewhere.
 Locally there is nothing to disambiguate, because the program is a binary in the package
 manager's `bin`, not a directory. So the directory is simply `dotflies`, under `.config`
 like everything else. Local directory name and repository name routinely differ anyway:
@@ -123,7 +123,7 @@ version = 1
 apps = ["kitty", "zsh", "mpd", "ncmpcpp", "meld", "vscode"]
 
 [remote]                                          # optional
-url = "git@github.com:slashome/_dotflies.git"
+url = "git@github.com:<github-username>/_dotflies.git"
 ```
 
 With no `[remote]`, dotflies runs locally and never mentions Git.

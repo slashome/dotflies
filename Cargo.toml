@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 description = "Version the configuration of the software you use, and reinstall it with a single command."
 repository = "https://github.com/slashome/dotflies"
+license = "MIT"
 
 [dependencies]
 anyhow = "1"

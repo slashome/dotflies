@@ -69,7 +69,7 @@ version = 1
 apps = ["kitty", "zsh", "mpd", "ncmpcpp", "meld", "vscode"]
 
 [remote]                                          # optional
-url = "git@github.com:slashome/_dotflies.git"
+url = "git@github.com:<github-username>/_dotflies.git"
 ```
 
 With no `[remote]` section, dotflies runs locally and never mentions Git.

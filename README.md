@@ -65,4 +65,4 @@ remote at all.
 
 ## Licence
 
-To be decided.
+MIT — see [`LICENSE`](LICENSE).

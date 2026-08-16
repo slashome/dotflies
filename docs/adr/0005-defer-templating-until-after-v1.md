@@ -14,9 +14,9 @@ Two real needs exist in the configuration already adopted:
 
 1. **Variation by platform.** `configs/mpd/mpd.conf` declares an audio output of
    `type "osx"` (CoreAudio). On Linux it would be ALSA, PulseAudio or PipeWire.
-2. **Hardcoded absolute paths.** `configs/vscode/settings.json` contains
-   `<work-home>/…` in two places (`dart.flutterSdkPath` and a
-   `yaml.schemas` entry), and `mpd.conf` references `~/Music` and `~/.mpd/`.
+2. **Hardcoded absolute paths.** `configs/vscode/settings.json` contains an absolute
+   `$HOME`-rooted path in two places (`dart.flutterSdkPath` and a `yaml.schemas`
+   entry), and `mpd.conf` references `~/Music` and `~/.mpd/`.
 
 The first need disappears as long as v1 targets macOS only
 ([0002](0002-limit-v1-to-macos.md)). The second only bites if the username changes

@@ -8,14 +8,14 @@ Accepted — 2026-08-14
 
 dotflies has been attempted twice already, and never started:
 
-- [`slashome/dm`](https://github.com/slashome/dm) (24 August 2018) — "A dotfile
-  manager written in GO". One commit, `Initial commit`, containing a one-line README.
-  Not a single line of code was ever written.
-- [`slashome/profiles`](https://github.com/slashome/profiles) (April 2025) — "All my
-  dotfly profiles". Empty in the strict sense: no branch, no commit.
+- A first attempt (24 August 2018) — "A dotfile manager written in GO". One commit,
+  `Initial commit`, containing a one-line README. Not a single line of code was ever
+  written.
+- A second attempt (April 2025) — "All my dotfly profiles". Empty in the strict sense:
+  no branch, no commit.
 
-Meanwhile [`slashome/dotfiles`](https://github.com/slashome/dotfiles) (2019) — plain
-shell scripts around a flat manifest — served for years.
+Meanwhile a dotfiles repository from 2019 — plain shell scripts around a flat
+manifest — served for years.
 
 The deciding factor was not the language, nor technical ambition. It was **how big
 the first push was**. Neither dead attempt contains a single decision: they never had

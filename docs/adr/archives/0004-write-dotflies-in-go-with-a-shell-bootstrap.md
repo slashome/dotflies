@@ -7,8 +7,8 @@ Superseded — 2026-08-14 — by
 
 Three of the four facts this ADR rested on did not survive checking. The tap has no
 goreleaser and no binary-release path **for any language**, so "well trodden" was wrong
-— though correcting it favours neither language. `redlight`, cited here as the
-structural model, is itself Rust, so this ADR's own citation did not support its
+— though correcting it favours neither language. The daemon cited here as the
+structural model is itself Rust, so this ADR's own citation did not support its
 conclusion. And the "wants tests" argument settles compiled-versus-shell, not
 Go-versus-Rust.
 
@@ -25,36 +25,34 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/master/t
 
 It must install dotflies, install the software, and apply its configuration.
 
-The choice of language was called into question by history:
-[`slashome/dm`](https://github.com/slashome/dm) announced "A dotfile manager written
-in GO" and never got past its README, while
-[`slashome/dotfiles`](https://github.com/slashome/dotfiles) (2019), in shell, actually
-served.
+The choice of language was called into question by history: a 2018 attempt announced
+"A dotfile manager written in GO" and never got past its README, while a 2019 dotfiles
+repository, in shell, actually served.
 
-Checked: `dm` has **exactly one commit**, `Initial commit` of 24 August 2018,
+Checked: the 2018 attempt has **exactly one commit**, `Initial commit` of 24 August 2018,
 containing a one-line README. **No Go was ever written.** The repository is therefore
 not evidence about Go — it is evidence about the absence of scope, already addressed
 by [0001](../0001-scope-v1-to-a-minimal-verifiable-milestone.md).
 
 Facts in favour of Go in this specific context:
 
-- [`slashome/homebrew-tap`](https://github.com/slashome/homebrew-tap) already exists
-  and is active. The goreleaser → Homebrew formula path is well trodden.
+- Our Homebrew tap already exists and is active. The goreleaser → Homebrew formula
+  path is well trodden.
 - The product is not a sequence of chained commands. It compares states, detects
   broken links, parses managed blocks, produces a report and proposes repairs
   ([0003](../0003-separate-owned-files-from-shared-files.md)). That kind of logic wants
   tests, and tests badly in shell.
 - The riskiest mechanism in the product — writing into a file we do not own —
   deserves unit tests over awkward cases.
-- [`slashome/redlight`](https://github.com/slashome/redlight), a macOS + Linux daemon,
-  is an existing precedent for homegrown cross-platform structure.
+- An existing macOS + Linux daemon of ours is a precedent for homegrown cross-platform
+  structure.
 
 One constraint is unavoidable: **the bootstrap script cannot be Go**, since it runs
 before the binary exists.
 
 ## Decision
 
-**dotflies is written in Go.** The binary ships through `slashome/homebrew-tap`.
+**dotflies is written in Go.** The binary ships through our Homebrew tap.
 
 **`tools/install.sh` stays POSIX shell**, and its scope is strictly bounded:
 
