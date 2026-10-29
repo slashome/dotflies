@@ -5,7 +5,7 @@
 > and wrote the design notes. The project starts here.
 
 > **This is the origin document, kept for its context — not the current state.**
-> For where things stand, read [`PLAN.md`](PLAN.md). Two things here have moved on: the
+> For where things stand, read [`PLAN.md`](https://github.com/slashome/dotflies/blob/4a1a24e/PLAN.md). Two things here have moved on: the
 > language is Rust, not Go ([0006](docs/adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md)),
 > and the questions §9 asks have been answered
 > ([0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md)).
@@ -48,7 +48,7 @@ usable with no remote repository at all.
 ## 3. Current state — to absorb
 
 > ⚠️ **On the work Mac only.** The personal Mac has none of this: no `~/.dotflies`, no
-> links, `~/.config/kitty/` empty. See the note at the top of `PLAN.md`.
+> links, `~/.config/kitty/` empty. See the note at the top of [`PLAN.md`](https://github.com/slashome/dotflies/blob/4a1a24e/PLAN.md).
 
 `~/.dotflies/` already exists, assembled **by hand**, and holds the live configuration:
 
@@ -184,10 +184,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/slashome/dotflies/main/too
 > proposed, then settled as
 > [ADR 0007](docs/adr/0007-adopt-a-declarative-per-program-manifest.md). The §8 items
 > were put back to the owner rather than decided here, as asked, and the surviving ones
-> are tracked under *Deferred decisions* in [`PLAN.md`](PLAN.md). Kept below as the
+> are tracked under *Deferred decisions* in [`PLAN.md`](https://github.com/slashome/dotflies/blob/4a1a24e/PLAN.md). Kept below as the
 > record of what was asked.
 
-1. Read [`PLAN.md`](PLAN.md), then all of `docs/adr/`, then
+1. Read [`PLAN.md`](https://github.com/slashome/dotflies/blob/4a1a24e/PLAN.md), then all of `docs/adr/`, then
    [`docs/DESIGN.md`](docs/DESIGN.md) and [`docs/SOFTWARE.md`](docs/SOFTWARE.md).
 2. Look at the 2019 dotfiles repository — especially `install.sh`, `program_list.sh`
    and `scripts/core/` — to absorb what worked.

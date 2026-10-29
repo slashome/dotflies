@@ -71,14 +71,3 @@ i3 environment that is no longer in use.
 
 Still worth salvaging: the `ranger`, `vim` and `zsh` configurations, and the
 script-launcher idea.
-
-## To inventory
-
-Installed on the machine but absent from this document — to review:
-
-- [ ] shell (`zsh`, aliases, prompt)
-- [ ] `git` (`~/.gitconfig`)
-- [ ] Homebrew: generate a `Brewfile`
-- [ ] Cursor (installed alongside VS Code — separate config, to take over or not)
-- [ ] `~/.claude/` (agents, skills, hooks)
-- [ ] `lnav`, `htop`, `ranger`, `flameshot`, `mpv`, `OpenRGB` (present in `~/.config/`)
