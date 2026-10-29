@@ -281,17 +281,3 @@ Merged sources:
 
 - `~/workspace/dotfiles/install.txt` → reproduced verbatim in
   [`SOFTWARE.md`](SOFTWARE.md), folder removed.
-
-Next:
-
-- [ ] settle 7 bis (where to publish) — **done**: a new `dotflies` repository
-- [ ] settle 7 (existing tool or homegrown) — **done**: homegrown, see
-      [ADR 0006](adr/0006-write-dotflies-in-rust-with-a-shell-bootstrap.md)
-      (which superseded ADR 0004: the language is Rust, not Go)
-- [ ] settle `configs/homapage` vs `configs/homepage` (duplicate, typo)
-- [ ] recover the still-relevant configs from the 2019 repository (ranger, zsh, vim)
-- [ ] settle our lyrics tool vs ncmpcpp's lyrics binding (functional overlap)
-- [ ] adopt `~/.gitconfig`, `~/.zshrc`, `~/.claude/`
-- [ ] capture a `Brewfile`
-- [ ] handle the `window-state` noise in Meld's keyfile
-- [ ] make `mpd.conf` platform-conditional

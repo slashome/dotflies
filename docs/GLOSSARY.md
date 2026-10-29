@@ -4,8 +4,7 @@ Every term dotflies uses, in two sentences, plus **why it exists here** — beca
 general definition is rarely the useful part. Each entry points at a real case from the
 configuration this project already manages.
 
-This file explains vocabulary, not progress. For where the work stands, read
-[`PLAN.md`](../PLAN.md).
+This file explains vocabulary, not progress.
 
 ---
 

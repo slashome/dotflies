@@ -4,8 +4,8 @@ A configuration manager: version the configuration of the software you use, and
 reinstall it **with a single command** on a fresh machine.
 
 > **Status: starting.** The scope and the manifest format are both settled
-> ([`docs/adr/`](docs/adr/)); the code is being written in Rust. See
-> [`PLAN.md`](PLAN.md) for where it stands.
+> ([`docs/adr/`](docs/adr/)); the code is being written in Rust. The roadmap is tracked outside this
+> repository.
 
 ## The problem
 
@@ -51,7 +51,6 @@ The full reasoning is in [ADR 0002](docs/adr/0002-limit-v1-to-macos.md).
 
 ## Documentation
 
-- [`PLAN.md`](PLAN.md) — status, blockers, milestones
 - [`docs/GLOSSARY.md`](docs/GLOSSARY.md) — every term in two sentences, and why it exists
   here. Start there if "managed block" or "drift" means nothing to you yet
 - [`docs/adr/`](docs/adr/) — the decisions and why they were made
